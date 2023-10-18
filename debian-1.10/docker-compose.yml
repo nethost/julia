@@ -1,0 +1,6 @@
+services:
+  latest:
+    build:
+      context: .
+      target: latest
+    image: nethost/julia:1.10
