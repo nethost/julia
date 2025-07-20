@@ -83,16 +83,8 @@ RUN set -eux; \
   # smoke test
   julia --version
 
+RUN apt-get update && apt-get install -y make gcc g++
+
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["julia"]
-
-### builder ###
-
-FROM latest AS builder
-LABEL maintainer="hi@billgo.me"
-RUN apt-get update && apt-get install -y make gcc g++
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
-
-CMD [ "node" ]
